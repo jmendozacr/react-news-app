@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header               from './components/Header';
+import ListNews             from './components/ListNews';
 
 export default class App extends Component {
   state = {
@@ -26,7 +27,7 @@ export default class App extends Component {
       <>
         <Header title="React News API"/>
         <div className="container white container-news">
-
+          <ListNews news={this.state.news}/>
         </div>
       </>
     )
