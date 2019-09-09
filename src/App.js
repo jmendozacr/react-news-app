@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header               from './components/Header';
 import ListNews             from './components/ListNews';
+import Form                 from './components/Form';
 
 export default class App extends Component {
   state = {
@@ -12,8 +13,8 @@ export default class App extends Component {
 
   }
 
-  apiCallNews = async () => {
-    const url = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=f0d79f28f75944c2af621c371c59c26c`;
+  apiCallNews = async (category="general") => {
+    const url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=f0d79f28f75944c2af621c371c59c26c`;
     const response = await fetch(url);
     const news = await response.json();
 
@@ -27,6 +28,7 @@ export default class App extends Component {
       <>
         <Header title="React News API"/>
         <div className="container white container-news">
+          <Form apiCallNews={this.apiCallNews}/>
           <ListNews news={this.state.news}/>
         </div>
       </>
